@@ -319,6 +319,7 @@ class ComputeUncertainty:
             output_fn = self.get_output_fn(pipeline.model)
             if not isinstance(pipeline.model, MipNerfModel):
                 outputs, points, offsets = output_fn(ray_bundle, pipeline.model)
+                # find hessian here and add info to sef.hessian
                 hessian = self.find_uncertainty(points, offsets, outputs['rgb'], pipeline.model.field.spatial_distortion)    
                 self.hessian += hessian.clone().detach()
             else:

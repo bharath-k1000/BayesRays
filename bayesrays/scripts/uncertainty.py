@@ -316,8 +316,10 @@ class ComputeUncertainty:
         for step in range(len_train):
             print("step",step)
             ray_bundle, batch = pipeline.datamanager.next_train(step)
+            # use get_output_fn to get the output_fn
             output_fn = self.get_output_fn(pipeline.model)
             if not isinstance(pipeline.model, MipNerfModel):
+                # use output_fn that was found above to get outputs, points, offsets
                 outputs, points, offsets = output_fn(ray_bundle, pipeline.model)
                 # find hessian here and add info to sef.hessian
                 hessian = self.find_uncertainty(points, offsets, outputs['rgb'], pipeline.model.field.spatial_distortion)    

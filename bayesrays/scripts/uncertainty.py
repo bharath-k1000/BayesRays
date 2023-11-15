@@ -19,11 +19,14 @@ import nerfacc
 import pkg_resources
 from nerfstudio.utils.eval_utils import eval_setup
 from nerfstudio.utils.rich_utils import CONSOLE
+# model import here
 from nerfstudio.models.nerfacto import NerfactoModel
+
 from nerfstudio.models.instant_ngp import NGPModel
 from nerfstudio.models.mipnerf import MipNerfModel
 from nerfstudio.field_components.field_heads import FieldHeadNames
 from nerfstudio.field_components.encodings import HashEncoding
+# imported from utils.utils for -
 from bayesrays.utils.utils import normalize_point_coords, find_grid_indices, get_gaussian_blob_new
 
 
